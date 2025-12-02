@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  build-producer:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,6 +19,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-
-      - name: Compile
-        run: mvn -B -e -ntp clean package
+          
+      - name: Build Producer
+        run: mvn -f producer/pom.xml -B -e -ntp clean package
+        
+      - name: Build Consumer
+        run: mvn -f consumer/pom.xml -B -e -ntp clean package
