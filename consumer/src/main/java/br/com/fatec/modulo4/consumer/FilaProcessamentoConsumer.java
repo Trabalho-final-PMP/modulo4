@@ -29,9 +29,10 @@ public class FilaProcessamentoConsumer {
     public void listener(ConsumerRecord<String, FilaProcessamento> consumerRecord) {
         try {
             log.info(
-                    "Mensagem recebida | topic={} | key={} | partition={} | offset={}",
+                    "Mensagem recebida | topic={} | key={} | value={} | partition={} | offset={}",
                     consumerRecord.topic(),
                     consumerRecord.key(),
+                    consumerRecord.value(),
                     consumerRecord.partition(),
                     consumerRecord.offset()
             );
